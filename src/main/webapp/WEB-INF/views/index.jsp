@@ -14,20 +14,10 @@
 <jsp:include page="common/header.jsp" />
 
 
-<!-- 메인 배너 -->
-<div class="container" style="text-align:center; background: linear-gradient(135deg, #ffb6c1, #ff85a2); color:#fff; padding:60px 20px; font-size:2rem; font-weight:bold; margin-top:20px;">
-    Welcome to My Shop
-</div>
-
 <!-- 컨테이너 -->
 <div class="container">
 
-    <!-- 인사말 영역 -->
-    <section class="welcome" style="text-align:center; margin-bottom:30px;">
-        <h2>환영합니다!</h2>
-        <p>나만의 쇼핑몰에서 특별한 상품을 만나보세요.</p>
-    </section>
-
+   
     <!-- 추천 상품 영역 -->
     <section class="featured-products" style="margin-bottom:40px;">
         <h3>추천 상품</h3>
