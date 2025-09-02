@@ -1,144 +1,226 @@
-@charset "UTF-8";
-
-/* 전체 레이아웃 */
-body {
-    margin: 0;
-    font-family: 'Noto Sans KR', sans-serif;
-    background: #fdf6e3; /* 부드러운 연베이지 */
-    color: #333;
-    min-height: 100vh;
+	@charset "UTF-8";
+	
+	/* 전체 레이아웃 */
+	body {
+	    margin: 0;
+	    font-family: 'Noto Sans KR', sans-serif;
+	    background: #fff;
+	    color: #222;
+	    min-height: 100vh;
+	    display: flex;
+	    flex-direction: column;
+	}
+	
+	/* 상단 공지바 */
+	.top-bar {
+	    background: #000;
+	    color: #fff;
+	    text-align: center;
+	    padding: 6px 0;
+	    font-size: 13px;
+	    letter-spacing: 1px;
+	}
+	
+header {
     display: flex;
-    flex-direction: column;
-}
-
-/* 상단 공지바 */
-.top-bar {
-    background: #5a4632; /* 다크 브라운 */
-    color: #fff;
-    text-align: center;
-    padding: 6px 0;
-    font-size: 13px;
-    width: 95%;
-    margin: 0 auto;
-    border-radius: 0 0 6px 6px;
-}
-
-/* 네비게이션 / header */
-header, .nav {
-    width: 95%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* 좌-우 정렬 */
     align-items: center;
-    padding: 14px 0;
-    background: #fff;
-    border-bottom: 1px solid #ddd;
-    position: sticky;
-    top: 0;
-    z-index: 100;
+    padding: 10px 40px;
 }
 
-header .logo, .nav .brand {
-    font-weight: bold;
-    font-size: 20px;
-    letter-spacing: 2px;
-    color: #5a4632; /* 브라운 계열 */
-}
-
-header nav ul {
-    list-style: none;
+/* 오른쪽 메뉴 */
+.nav-right {
     display: flex;
-    margin: 0;
-    padding: 0;
+    align-items: center;
+    gap: 25px;   /* LOGIN 과 CART 사이 간격 */
 }
 
-header nav ul li {
-    margin-left: 25px;
-}
-
-header nav ul li a {
+/* 오른쪽 메뉴 텍스트 스타일 */
+.nav-right a {
     text-decoration: none;
-    color: #5a4632;
-    font-size: 15px;
+    color: #333;
     font-weight: 500;
-    transition: color 0.3s;
 }
+	
+	/* nav-left, nav-right 크기를 내용에 맞게 */
+	.nav-left,
+	.nav-right {
+	    flex: 0;   /* 필요 이상으로 공간 안 차지 */
+	}
+	
 
-header nav ul li a:hover {
-    color: #a67c52; /* 포인트 브라운 */
-}
-
-
-
-/* 메인 컨텐츠 */
-.container {
-    max-width: 1100px;
-    margin: 30px auto;
-    padding: 20px;
-    background: #fffaf0; /* 연베이지톤 카드 */
-    border-radius: 12px;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.05);
-}
-
-
-
-.hero-banner h1 {
-    margin: 0;
-    font-size: 28px;
-    color: #5a4632; /* 다크 브라운 글자 */
-    font-weight: bold;
-}
-
-/* 버튼 스타일 */
-button {
-    padding: 12px;
-    background-color: #a67c52; /* 브라운 계열 */
-    border: none;
-    color: #fff;
-    font-size: 16px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-button:hover {
-    background-color: #8b5e3c;
-    box-shadow: 0 4px 10px rgba(139,94,60,0.3);
-}
-
-/* 인풋 필드 */
-input[type="text"], input[type="password"], input[type="email"] {
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #fff;
-    transition: all 0.3s;
-}
-
-input[type="text"]:focus,
-input[type="password"]:focus,
-input[type="email"]:focus {
-    border-color: #a67c52;
-    box-shadow: 0 0 5px rgba(166,124,82,0.3);
-    outline: none;
-}
-
-/* 회원가입 폼 */
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-/* footer */
-footer {
-    width: 95%;
-    margin: 0 auto;
-    border-top: 1px solid #ddd;
-    background: #fff;
-    color: #777;
-    text-align: center;
-    padding: 1rem;
-    font-size: 0.85rem;
-}
+	
+	/* 네비게이션 공통 */
+	header nav ul {
+	    list-style: none;
+	    display: flex;
+	    margin: 0;
+	    gap: 40px;
+	    padding: 0;
+	    gap: 30px;
+	}
+	
+	header nav ul li {
+	    margin-right: 20px; /* 오른쪽 여백 */
+	}
+	
+	header nav ul li a {
+	    text-decoration: none;
+	    color: #222;
+	    font-size: 14px;
+	    font-weight: 500;
+	    transition: color 0.3s;
+	}
+	
+	header nav ul li a:hover {
+	    color: #666;
+	}
+	
+	/* 메인 배너 */
+	.hero-banner {
+	    position: relative;
+	    width: 100%;
+	    height: 350px;
+	    background: url("../images/banner.jpg") no-repeat center center/cover;
+	    display: flex;
+	    align-items: center;
+	    justify-content: center;
+	    text-align: center;
+	    color: #fff;
+	}
+	
+	.hero-banner::after {
+	    content: "";
+	    position: absolute;
+	    top: 0; left: 0; right: 0; bottom: 0;
+	    background: rgba(0,0,0,0.4); /* 어두운 오버레이 */
+	}
+	
+	.hero-content {
+	    position: relative;
+	    z-index: 2;
+	}
+	
+	.hero-content h1 {
+	    font-size: 48px;
+	    margin-bottom: 10px;
+	    letter-spacing: 3px;
+	    font-weight: bold;
+	}
+	
+	.hero-content p {
+	    font-size: 18px;
+	    margin-bottom: 20px;
+	    letter-spacing: 2px;
+	}
+	
+	.hero-btn {
+	    display: inline-block;
+	    padding: 12px 28px;
+	    background: #fff;
+	    color: #000;
+	    font-size: 16px;
+	    font-weight: 600;
+	    text-decoration: none;
+	    border-radius: 30px;
+	    transition: all 0.3s;
+	}
+	
+	.hero-btn:hover {
+	    background: #000;
+	    color: #fff;
+	}
+	
+	
+	/* 로고 */
+	header .logo {
+	    font-size: 22px;
+	    font-weight: bold;
+	    letter-spacing: 3px;
+	    color: #000;
+	    text-align: center;
+	    flex: 1;
+	}
+	
+	/* 왼쪽, 오른쪽 메뉴 위치 */
+	.nav-left {
+	    flex: 1;
+	}
+	.nav-right {
+	    flex: 1;
+	    display: flex;
+	    justify-content: flex-end;
+	}
+	
+	/* 컨테이너 */
+	.container {
+	    max-width: 1200px;
+	    margin: 40px auto;
+	    padding: 0 20px;
+	}
+	
+	/* 섹션 제목 */
+	.container h2 {
+	    font-size: 20px;
+	    margin-bottom: 20px;
+	    font-weight: bold;
+	    border-bottom: 1px solid #eee;
+	    padding-bottom: 10px;
+	}
+	
+	/* 상품 카드 */
+	.product-grid {
+	    display: grid;
+	    justify-content: center;
+	    grid-template-columns: repeat(auto-fill,minmax(220px,1fr));
+	    gap: 25px;
+	    flex-wrap: wrap;  
+	}
+	.product-card {
+	    text-align: center;
+	}
+	.product-card img {
+	    width: 100%;
+	    border-radius: 8px;
+	    margin-bottom: 12px;
+	}
+	.product-card .name {
+	    font-size: 15px;
+	    margin: 4px 0;
+	}
+	.product-card .price {
+	    font-size: 14px;
+	    font-weight: bold;
+	}
+	
+	/* 카테고리 */
+	.category-list {
+	    display: flex;
+	    gap: 20px;
+	    flex-wrap: wrap;
+	}
+	.category-item {
+	    flex: 1;
+	    min-width: 150px;
+	    text-align: center;
+	    padding: 15px 0;
+	    border: 1px solid #ddd;
+	    border-radius: 6px;
+	    cursor: pointer;
+	    transition: all 0.3s;
+	}
+	.category-item:hover {
+	    background: #f5f5f5;
+	    border-color: #bbb;
+	}
+	
+	/* 푸터 */
+	footer {
+	    margin-top: auto;
+	    border-top: 1px solid #ddd;
+	    background: #fafafa;
+	    color: #555;
+	    text-align: center;
+	    padding: 1rem;
+	    font-size: 0.85rem;
+	}

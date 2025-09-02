@@ -7,12 +7,16 @@
 <mapper namespace="com.kmi.miniTest.dao.MemberDao">
 
 <insert id="memberJoinDao">
-	INSERT INTO member(memberid, userid, memberpw, membername) 
+	INSERT INTO member(userid, memberid, memberpw, membername) 
 	VALUES (member_seq.nextval, #{param1}, #{param2}, #{param3})
 </insert>
 
-<select id="memberidCheckDao" resultType="int">
-	SELECT COUNT(*) FROM member WHERE memberid=#{param1}  <!-- 아이디가 있으면 1반환  -->
+<select id="memberidCheckDao" resultType="int"> <!-- 아이디가 있으면 1반환  -->
+	SELECT COUNT(*) FROM member WHERE memberid=#{param1}  
+</select>
+
+<select id="memberLoginDao" resultType="int"> <!-- 아이디가 있으면 1반환  -->
+	SELECT COUNT(*) FROM member WHERE memberid=#{param1} AND memberpw=#{param2}
 </select>
 
 
