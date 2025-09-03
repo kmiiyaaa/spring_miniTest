@@ -6,7 +6,6 @@
 <head>
     <meta charset="UTF-8">
     <title>상품 목록</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/productList.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
 </head>
 <body>
@@ -26,10 +25,11 @@
                     <div class="product-info">
                         <h3 class="product-name">${product.productname}</h3>
                         <p class="product-price">${product.productprice}원</p>
-                        <form action="${pageContext.request.contextPath}/cartAdd" method="post">
-				    				<input type="hidden" name="productId" value="${product.productid}">
-				   				 <button type="submit" class="add-cart-btn">장바구니</button>
-								</form>
+                        <form action="${pageContext.request.contextPath}/addCart" method="post">
+						    <input type="hidden" name="productId" value="${product.productid}">
+						    <input type="number" name="quantity" value="1" min="1" class="quantity-input">
+						    <button type="submit" class="add-cart-btn">장바구니</button>
+						</form>
                     </div>
                 </div>
             </c:forEach>

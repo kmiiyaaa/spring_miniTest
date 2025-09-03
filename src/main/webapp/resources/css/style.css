@@ -124,11 +124,12 @@ footer {
 
 /* 제품 그리드 */
 .product-grid {
-    display: flex;        /* 가로 배치 */
-    flex-wrap: wrap;      /* 화면 좁으면 자동 줄 바꿈 */
-    gap: 20px;            /* 카드 사이 간격 */
-    justify-content: flex-start;
-    align-items: flex-start; /* 세로 정렬 */
+    display: flex;        
+    flex-wrap: wrap;      
+    gap: 20px;            
+    justify-content: center;   /* 중앙 정렬 */
+    align-items: flex-start;   
+    align-content: center;
 }
 
 /* 제품 카드 */
@@ -451,5 +452,115 @@ footer {
     background: #fff;
     color: #000;
     border-color: #000;
+}
+
+/* ================= 제품 리스트 ================= */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 0;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2rem;
+    color: #333;
+}
+
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center; /* 중앙 정렬 */
+}
+
+.product-item {
+    flex: 0 1 250px; /* 카드 최소 폭 250px */
+    background-color: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.product-image {
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.product-item:hover .product-image img {
+    transform: scale(1.05);
+}
+
+.product-info {
+    padding: 15px 10px;
+    text-align: center;
+}
+
+.product-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 10px 0 5px;
+    color: #333;
+}
+
+.product-price {
+    font-size: 1rem;
+    color: #e53935;
+    margin-bottom: 12px;
+    font-weight: 500;
+}
+
+.quantity-input {
+    width: 60px;
+    padding: 5px;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+.add-cart-btn {
+    padding: 10px 20px;
+    background-color: black;
+    color: #fff;
+    font-size: 0.95rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.add-cart-btn:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+/* 반응형 */
+@media screen and (max-width: 900px) {
+    .product-item {
+        flex: 0 1 45%;
+    }
+}
+@media screen and (max-width: 600px) {
+    .product-item {
+        flex: 0 1 100%;
+    }
 }
 

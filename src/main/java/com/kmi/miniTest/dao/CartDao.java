@@ -10,6 +10,10 @@ public interface CartDao {
     public void addCartDao(CartDto cartItem);
 
     // 장바구니 목록 조회
-    List<CartDto> getCartListDao(String memberid);
+    public List<CartDto> getCartListDao(String memberid);
+    
+    // 장바구니 삭제
+    public int deleteCartDao(int cartid);
+    
 
 }

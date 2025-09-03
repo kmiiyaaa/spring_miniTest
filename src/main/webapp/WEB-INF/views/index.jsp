@@ -18,7 +18,7 @@
     <div class="hero-content">
         <h1>MI'S CLOSET</h1>
         <p>2025 FALL COLLECTION</p>
-        <a href="shop.do" class="hero-btn">SHOP NOW</a>
+        <a href="plist" class="hero-btn">SHOP NOW</a>
     </div>
 	</section>
 
