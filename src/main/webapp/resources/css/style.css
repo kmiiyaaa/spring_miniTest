@@ -7,8 +7,7 @@
 	    background: #fff;
 	    color: #222;
 	    min-height: 100vh;
-	    display: flex;
-	    flex-direction: column;
+	    
 	}
 	
 	/* 상단 공지바 */
@@ -76,7 +75,101 @@ header {
 	    color: #666;
 	}
 	
-	/* 메인 배너 */
+/* ================= 푸터 수정 ================= */
+footer {
+    margin-top: auto;
+    border-top: 1px solid #ddd;
+    background: #fafafa;
+    color: #555;
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.85rem;
+
+    display: flex;         /* 추가 */
+    justify-content: center; /* 가로 중앙 */
+    align-items: center;     /* 세로 중앙 */
+}
+
+/* 카테고리 */
+	.category-list {
+	    display: flex;
+	    gap: 20px;
+	    flex-wrap: wrap;
+	}
+	.category-item {
+	    flex: 1;
+	    min-width: 150px;
+	    text-align: center;
+	    padding: 15px 0;
+	    border: 1px solid #ddd;
+	    border-radius: 6px;
+	    cursor: pointer;
+	    transition: all 0.3s;
+	}
+	.category-item:hover {
+	    background: #f5f5f5;
+	    border-color: #bbb;
+	}
+	
+	/* ================= 신상품 / 추천 영역 ================= */
+.featured-products {
+    margin: 50px 0;
+    display: block; /* 부모 flex 영향 차단 */
+}
+
+.featured-products h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* 제품 그리드 */
+.product-grid {
+    display: flex;        /* 가로 배치 */
+    flex-wrap: wrap;      /* 화면 좁으면 자동 줄 바꿈 */
+    gap: 20px;            /* 카드 사이 간격 */
+    justify-content: flex-start;
+    align-items: flex-start; /* 세로 정렬 */
+}
+
+/* 제품 카드 */
+.product-card {
+    flex: 0 1 200px;      /* 최소 200px, 남는 공간만큼 늘어남 */
+    max-width: 250px;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    transition: transform 0.3s;
+    background: #fff;
+    box-sizing: border-box;
+}
+
+.product-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.product-card .name {
+    margin: 10px 0 5px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.product-card .price {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* 카드 hover 효과 */
+.product-card:hover {
+    transform: translateY(-5px);
+}
+	
+	
+/* ================= 메인 배너 수정 ================= */
+/* 메인 배너 */
 	.hero-banner {
 	    position: relative;
 	    width: 100%;
@@ -89,7 +182,7 @@ header {
 	    color: #fff;
 	}
 	
-	.hero-banner::after {
+		.hero-banner::after {
 	    content: "";
 	    position: absolute;
 	    top: 0; left: 0; right: 0; bottom: 0;
@@ -131,15 +224,23 @@ header {
 	    color: #fff;
 	}
 	
-	
-	/* 로고 */
-	header .logo {
-	    font-size: 22px;
-	    font-weight: bold;
-	    letter-spacing: 3px;
-	    color: #000;
-	    text-align: center;
-	    flex: 1;
+
+
+	.logo {
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;  /* 밑줄 제거 */
+    color: black;           /* 글씨 색 */
+    cursor: pointer;        /* 마우스 포인터 변경 */
+}
+
+	/* 클릭해도 색 안 바뀌도록 */
+	.logo:link,
+	.logo:visited,
+	.logo:hover,
+	.logo:active {
+	    color: black;           /* 모두 같은 색 유지 */
+	    text-decoration: none;  /* 밑줄도 안 생기게 */
 	}
 	
 	/* 왼쪽, 오른쪽 메뉴 위치 */
@@ -151,76 +252,204 @@ header {
 	    display: flex;
 	    justify-content: flex-end;
 	}
-	
-	/* 컨테이너 */
-	.container {
-	    max-width: 1200px;
-	    margin: 40px auto;
-	    padding: 0 20px;
-	}
-	
-	/* 섹션 제목 */
-	.container h2 {
-	    font-size: 20px;
-	    margin-bottom: 20px;
-	    font-weight: bold;
-	    border-bottom: 1px solid #eee;
-	    padding-bottom: 10px;
-	}
-	
-	/* 상품 카드 */
-	.product-grid {
-	    display: grid;
-	    justify-content: center;
-	    grid-template-columns: repeat(auto-fill,minmax(220px,1fr));
-	    gap: 25px;
-	    flex-wrap: wrap;  
-	}
-	.product-card {
-	    text-align: center;
-	}
-	.product-card img {
-	    width: 100%;
-	    border-radius: 8px;
-	    margin-bottom: 12px;
-	}
-	.product-card .name {
-	    font-size: 15px;
-	    margin: 4px 0;
-	}
-	.product-card .price {
-	    font-size: 14px;
-	    font-weight: bold;
-	}
-	
-	/* 카테고리 */
-	.category-list {
-	    display: flex;
-	    gap: 20px;
-	    flex-wrap: wrap;
-	}
-	.category-item {
-	    flex: 1;
-	    min-width: 150px;
-	    text-align: center;
-	    padding: 15px 0;
-	    border: 1px solid #ddd;
-	    border-radius: 6px;
-	    cursor: pointer;
-	    transition: all 0.3s;
-	}
-	.category-item:hover {
-	    background: #f5f5f5;
-	    border-color: #bbb;
-	}
-	
-	/* 푸터 */
-	footer {
-	    margin-top: auto;
-	    border-top: 1px solid #ddd;
-	    background: #fafafa;
-	    color: #555;
-	    text-align: center;
-	    padding: 1rem;
-	    font-size: 0.85rem;
-	}
+
+/* 중앙 정렬 컨테이너 */
+.write-container {
+    width: 600px;
+    max-width: 90%;
+    margin: 60px auto;
+    background: #fff;
+    padding: 40px 35px;
+    border: 1px solid #000;      /* 검정 선 */
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    box-sizing: border-box;
+}
+
+/* 폼 제목 */
+.write-container h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 24px;
+    font-weight: 600;
+    color: #222;
+}
+
+/* 폼 레이아웃 */
+.write-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* 제목 + 작성자 */
+.form-top {
+    display: flex;
+    gap: 15px;
+}
+
+.form-top input[type="text"] {
+    flex: 1;
+    padding: 12px 15px;
+    border: 1px solid #000;   /* 검정 선 */
+    border-radius: 8px;
+    font-size: 14px;
+    color: #222;
+    outline: none;
+    transition: all 0.2s;
+}
+
+.form-top input[type="text"]:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 4px rgba(0,123,255,0.4);
+}
+
+.form-top input[readonly] {
+    width: 150px;
+    background: #f0f0f0;
+    color: #666;
+    text-align: center;
+}
+
+/* 내용 */
+.form-content textarea {
+    width: 100%;
+    min-height: 200px;
+    padding: 12px 15px;
+    border: 1px solid #000;   /* 검정 선 */
+    border-radius: 8px;
+    font-size: 14px;
+    color: #222;
+    resize: none;
+    outline: none;
+    transition: all 0.2s;
+    box-sizing: border-box;
+}
+
+.form-content textarea:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 4px rgba(0,123,255,0.4);
+}
+
+/* 완료 버튼 */
+.form-bottom {
+    display: flex;
+    justify-content: center;
+}
+
+.btn-submit {
+    padding: 12px 50px;
+    background: #007bff;
+    color: #fff;
+    border: 1px solid #007bff;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-submit:hover {
+    background: #fff;
+    color: #007bff;
+    border-color: #007bff;
+}
+
+/* ================= 글쓰기 폼 스타일 ================= */
+/* .write-container 범위 제한 */
+.write-container {
+    width: 600px;
+    max-width: 90%;
+    margin: 60px auto;
+    background: #fff;
+    padding: 40px 35px;
+    border: 1px solid #000;      /* 검정 선 */
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    box-sizing: border-box;
+}
+
+.write-container h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 24px;
+    font-weight: 600;
+    color: #222;
+}
+
+.write-container .write-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.write-container .form-top {
+    display: flex;
+    gap: 15px;
+}
+
+.write-container .form-top input[type="text"] {
+    flex: 1;
+    padding: 12px 15px;
+    border: 1px solid #000;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #222;
+    outline: none;
+    transition: all 0.2s;
+}
+
+.write-container .form-top input[type="text"]:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 4px rgba(0,123,255,0.4);
+}
+
+.write-container .form-top input[readonly] {
+    width: 150px;
+    background: #f0f0f0;
+    color: #666;
+    text-align: center;
+}
+
+.write-container .form-content textarea {
+    width: 100%;
+    min-height: 200px;
+    padding: 12px 15px;
+    border: 1px solid #000;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #222;
+    resize: none;
+    outline: none;
+    transition: all 0.2s;
+    box-sizing: border-box;
+}
+
+.write-container .form-content textarea:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 4px rgba(0,123,255,0.4);
+}
+
+.write-container .form-bottom {
+    display: flex;
+    justify-content: center;
+}
+
+.write-container .btn-submit {
+    padding: 12px 50px;
+    background: #000;          /* 검정색 버튼 */
+    color: #fff;
+    border: 1px solid #000;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.write-container .btn-submit:hover {
+    background: #fff;
+    color: #000;
+    border-color: #000;
+}
+

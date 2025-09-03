@@ -20,13 +20,23 @@
             <form action="loginOk" method="post">
                 <div class="form-group">
                     <label for="userid">아이디</label>
-                    <input type="text" id="userid" name="userid" required>
+                    <input type="text" id="userid" name="memberid" required>
                 </div>
 
                 <div class="form-group">
                     <label for="userpw">비밀번호</label>
-                    <input type="password" id="userpw" name="userpw" required>
+                    <input type="password" id="userpw" name="memberpw" required>
                 </div>
+                
+                 <c:if test="${param.msg == 1}">
+                        <p style="color:red; font-size: 13px;"  >로그인 한 유저만 글쓰기 가능</p>
+                 </c:if>
+                 <c:if test="${param.msg == 2}">
+                        <p style="color:red; font-size: 13px;"  >장바구니를 보시려면 로그인 해주세요</p>
+                 </c:if>
+                  <c:if test="${param.msg == 3}">
+                        <p style="color:red; font-size: 13px;"  >상품을 담으시려면 로그인 해주세요</p>
+                 </c:if>
 
                 <div class="button-group">
                     <button type="submit" class="btn-login">로그인</button>

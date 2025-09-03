@@ -3,5 +3,5 @@
 <!DOCTYPE html>
 <footer>
     <p>&copy; 2025 My Shop. All Rights Reserved.</p>
-    <p>주소: 서울시 강남구 중앙로 777 | 전화: 02-123-4567</p>
+    <p>주소: 서울시 마포구 신촌로 176 | 전화: 02-123-4567</p>
 </footer>

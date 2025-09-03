@@ -42,11 +42,11 @@ public class MemberController {
 		
 		int checkFlag = memberDao.memberidCheckDao(mid);
 		
-		model.addAttribute("mid", mid);
-		
 		if(checkFlag == 0) {  //가입하려는 아이디가 없음 -> 가입가능
 			int result = memberDao.memberJoinDao(mid, mpw, mname);
+			
 			return "login";
+		
 		}else { // 이미 아이디 있음 - 가입실패
 			model.addAttribute("msg","이미 가입된 아이디 입니다.");
 			model.addAttribute("url", "join");
@@ -85,6 +85,18 @@ public class MemberController {
 		}
 				
 		
+	}
+	
+	@RequestMapping(value="/logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:login";
+	}
+	
+	//오시는길
+	@RequestMapping(value="/location")
+	public String location() {
+		return "location";
 	}
 		
 

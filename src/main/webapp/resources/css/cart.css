@@ -1,0 +1,47 @@
+@charset "UTF-8";
+/* ================= 장바구니 CSS ================= */
+.cart-container {
+    width: 80%;
+    max-width: 900px;
+    margin: 50px auto;
+    text-align: center; /* 글씨 중앙 */
+    position: relative;
+}
+
+.cart-container h1 {
+    font-size: 28px;
+    margin-bottom: 30px;
+}
+
+.cart-content {
+    min-height: 200px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    background: #fafafa;
+}
+
+.cart-footer {
+    margin-top: 20px;
+    position: relative;
+    height: 60px;
+}
+
+/* 결제 버튼 오른쪽 아래 고정 */
+.checkout-btn {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    padding: 12px 30px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.checkout-btn:hover {
+    background-color: #333;
+}

@@ -10,13 +10,14 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class ProductDto {
+public class CartDto {
 	
+	private int cartid;
+	private String memberid;
 	private int productid;
-	private String productname;
-	private int productprice;
-	private int productstock;
-	private String productimg;
+	private int quantity;
 	
+	private MemberDto memberDto;
+	private ProductDto productDto;
 
 }

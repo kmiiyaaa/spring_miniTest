@@ -5,9 +5,80 @@
     
  <mapper namespace="com.kmi.miniTest.dao.BoardDao">
  
+ 	<!-- 글쓰기  -->
  	<insert id="boardWriteDao">
- 		INSERT INTO boards(bnum, btitle, bcontent, bwriter, bhit) 
- 		VALUES(board_seq, #{param1}, #{param2}, #{param3}, 0)
- 	</insert>
+	    INSERT INTO boards(bnum, btitle, bcontent, bwriter, bhit)
+	    VALUES(board_seq.nextval, #{param1}, #{param2}, #{param3}, 0)
+	</insert>
+ 	
+ 	<!-- 1:1 관계 매핑 -->
+ 	<resultMap type="com.kmi.miniTest.dto.BoardDto" id="boardWithMember">
+ 	<id property="bnum" column="bnum"/>
+	<result property="btitle" column="btitle"/>
+	<result property="bcontent" column="bcontent"/> 	
+	<result property="bwriter" column="bwriter"/>
+	<result property="bhit" column="bhit"/> 	
+	<result property="bdate" column="bdate"/> 
+	
+	<association property="memberDto" javaType="com.kmi.miniTest.dto.MemberDto">
+	<id property="userid" column="userid" />
+	<result property="memberid" column="memberid"/>
+	<result property="memberpw" column="memberpw"/>
+	<result property="membername" column="membername"/>
+	<result property="memberdate" column="memberdate"/>
+	</association>	
+ 	</resultMap>
+ 	
+ 	<!-- 모든글 가져오기 -->
+ 	
+ 	<select id="boardListDao" resultMap="boardWithMember" >
+ 		
+<![CDATA[
+    SELECT *
+    FROM (
+        SELECT ROWNUM AS rnum, r.*
+        FROM (
+            SELECT 
+                b.bnum, b.btitle, b.bcontent, b.bwriter, b.bhit, b.bdate,
+                m.memberid, m.memberpw, m.membername, m.memberdate
+            FROM boards b
+            INNER JOIN member m ON b.bwriter = m.memberid
+            ORDER BY b.bnum DESC
+        ) r
+        WHERE ROWNUM <= #{param2}
+    )
+    WHERE rnum >= #{param1}
+ ]]>
+ 		
+ 	</select>
+ 	
+ 	
+ 	<!-- 모든 글 갯수 가져오기 -->
+ 	<select id="allBoardCountDao" resultType="int">
+ 		SELECT COUNT(*) FROM boards
+ 	</select>
+ 	
+ 	
+ 	<!-- 게시글 삭제 -->
+ 	<delete id="boardDeleteDao">
+ 		DELETE FROM boards 
+ 		WHERE WHERE bnum = TO_NUMBER(#{bnum, jdbcType=VARCHAR})
+ 	</delete>
+ 	
+ 	<!-- 글번호 해당글 상세보기  -->
+ 	<select id="contentViewDao" resultMap="boardWithMember">
+ 		SELECT b.bnum, b.btitle, b.bcontent, b.bwriter, m.memberid, b.bhit, b.bdate
+ 		FROM boards b
+ 		INNER JOIN member m ON b.bwriter = m.memberid
+ 		WHERE b.bnum = ${bnum} 
+ 	</select>
+ 	
+ 	
+ 	<!-- 조회수 증가 -->
+ 	<update id="updateHitDao">
+ 		UPDATE boards SET bhit = bhit+1 WHERE bnum =#{param1}
+ 	</update>
+ 	
+ 	
  
  </mapper>

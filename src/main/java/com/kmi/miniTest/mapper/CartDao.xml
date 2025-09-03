@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   
+   
+<mapper namespace="com.kmi.miniTest.dao.CartDao">
+
+	<insert id="addCartDao">
+ 		INSERT INTO cart(cartid, memberid, productid, quantity) 
+ 		VALUES (cart_seq.nextval, #{param1}, #{param2}, #{param3})
+ 	</insert>
+ 	
+ 	<select id="getCartListDao" resultType="com.kmi.miniTest.dto.CartDto" >
+ 		SELECT c.cartid, c.memberid, c.productid, c.quantity,
+               p.productname, p.productprice, p.productimg
+      FROM cart c
+      JOIN product p ON c.productid = p.productid
+      WHERE c.memberid = #{param1}
+ 	</select>
+ 
+
+</mapper>

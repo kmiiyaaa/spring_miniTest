@@ -18,7 +18,7 @@ public class MemberDto {
 	private int userid;
 	private String memberid;
 	private String memberpw;
-	private String memebername;
+	private String membername;
 	private Timestamp memberdate;
 
 }
