@@ -21,13 +21,13 @@ public class ProductController {
 	@Autowired
 	SqlSession sqlSession;
 	
-	@RequestMapping(value="/plist")
+	@RequestMapping(value="/productList")
 	public String plist(Model model) {
 		
 		ProductDao productDao = sqlSession.getMapper(ProductDao.class);
 		List<ProductDto> productDtos = productDao.allProductDao();
 		
-		model.addAttribute("plist", productDtos);
+		model.addAttribute("productList", productDtos);
 		
 		return "productList";
 	}

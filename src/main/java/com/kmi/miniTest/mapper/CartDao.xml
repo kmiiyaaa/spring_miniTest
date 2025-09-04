@@ -13,26 +13,28 @@
 	</insert>
  	
 
-    <resultMap id="cartWithMemberAndProduct" type="com.kmi.miniTest.dto.CartDto">
-        <id property="cartid" column="cartid"/>
-        <result property="memberid" column="memberid"/>
-        <result property="productid" column="productid"/>
-        <result property="quantity" column="quantity"/>
+  <resultMap id="cartWithMemberAndProduct" type="com.kmi.miniTest.dto.CartDto">
+     <!-- CartDto 기본 필드 -->
+    <id property="cartid" column="cartid"/>
+    <result property="memberid" column="memberid"/>
+    <result property="productid" column="productid"/>
+    <result property="quantity" column="quantity"/>
 
-        <!-- MemberDto 매핑 -->
-        <association property="memberDto" javaType="com.kmi.miniTest.dto.MemberDto">
-            <id property="userid" column="userid"/>
-            <result property="membername" column="membername"/>
-        </association>
+    <!-- member 매핑 -->
+    <association property="memberDto" javaType="com.kmi.miniTest.dto.MemberDto">
+        <result property="userid" column="userid"/>
+        <result property="membername" column="membername"/>
+    </association>
 
-        <!-- ProductDto 매핑 -->
-        <association property="productDto" javaType="com.kmi.miniTest.dto.ProductDto">
-            <id property="productid" column="productid"/>
-            <result property="productname" column="productname"/>
-            <result property="productprice" column="productprice"/>
-            <result property="productimg" column="productimg"/>
-        </association>
-    </resultMap>
+    <!-- product 매핑 -->
+     <association property="productDto" javaType="com.kmi.miniTest.dto.ProductDto">
+        <id property="productid" column="productid"/>
+        <result property="productname" column="productname"/>
+        <result property="productprice" column="productprice"/>
+        <result property="productstock" column="productstock"/>
+        <result property="productimg" column="productimg"/>
+    </association>
+</resultMap>
 
     <select id="getCartListDao" parameterType="string" resultMap="cartWithMemberAndProduct">
         SELECT c.cartid, c.memberid, c.productid, c.quantity,
@@ -48,5 +50,20 @@
     <delete id="deleteCartDao" >
         DELETE FROM cart WHERE cartid = #{param1}
     </delete>
+  
+
+<resultMap id="cartResultMap" type="com.kmi.miniTest.dto.CartDto">
+    <id property="cartid" column="cartid"/>
+    <result property="memberid" column="memberid"/>
+    <result property="productid" column="productid"/>
+    <result property="quantity" column="quantity"/>
+    <association property="productDto" javaType="com.kmi.miniTest.dto.ProductDto">
+        <id property="productid" column="p_id"/>
+        <result property="productname" column="productname"/>
+        <result property="productprice" column="productprice"/>
+    </association>
+</resultMap>
+
+  
 
 </mapper>

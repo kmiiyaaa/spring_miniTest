@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.kmi.miniTest.dao.CartDao;
 import com.kmi.miniTest.dao.ProductDao;
@@ -32,9 +33,19 @@ public class CartController {
 	   }
 	      
 	   CartDao cartDao = sqlSession.getMapper(CartDao.class);
-	   
 	   List<CartDto> cartList = cartDao.getCartListDao(sid);
+	   
+	   int totalPrice = 0;
+	   int totalQuantity = 0;
+	   
+	   for (CartDto c : cartList) {
+           totalPrice += c.getProductDto().getProductprice() * c.getQuantity();
+           totalQuantity += c.getQuantity();
+       }
+	   
 	   model.addAttribute("cartList", cartList);
+	   model.addAttribute("totalPrice", totalPrice);
+       model.addAttribute("totalQuantity", totalQuantity);
 	   
 	   return "cart";
 		
@@ -42,7 +53,7 @@ public class CartController {
 	
 	
 	// 장바구니 담기
-	@RequestMapping(value="addCart")
+	@RequestMapping(value="addCart" , method = RequestMethod.POST)
 	public String addCart(HttpSession session, Model model, HttpServletRequest request) {
 		
 		String sid = (String) session.getAttribute("sid"); // 세션에서 로그인 ID 가져오기
@@ -56,7 +67,7 @@ public class CartController {
 		String quantityStr = request.getParameter("quantity");
 
 		if(productIdStr == null || productIdStr.isEmpty()) {
-		    return "redirect:/productList?msg=error";
+		    return "redirect:/productList";
 		}
 
 		int productid = Integer.parseInt(productIdStr);
@@ -86,13 +97,6 @@ public class CartController {
 		
 		CartDao cartDao = sqlSession.getMapper(CartDao.class);
 		int result = cartDao.deleteCartDao(cartid);
-		
-		if(result==0) {
-			model.addAttribute("msg", "장바구니 삭제 실패");
-			model.addAttribute("url", "cart");
-		
-			return "alert/alert";
-		}
 		
 		return "redirect:cart";
 	}

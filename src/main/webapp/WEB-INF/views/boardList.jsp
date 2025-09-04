@@ -7,8 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Q&A 게시판</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/qna.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/qna.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
 </head>
 <body>
 

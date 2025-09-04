@@ -10,7 +10,7 @@
     <!-- 왼쪽 메뉴 -->
     <nav class="nav-left">
         <ul>
-            <li><a href="plist">SHOP</a></li> 
+            <li><a href="productList">SHOP</a></li> 
             <li><a href="boardList">Q/A</a></li>
             <li><a href="location">오시는 길</a></li>
         </ul>
