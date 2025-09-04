@@ -43,12 +43,10 @@
             <input type="hidden" name="bnum" value="${boardDto.bnum}">
 
             <div class="btn-group">
-    <c:if test="${not empty sessionScope.sid 
-        and (sessionScope.sid eq boardDto.memberDto.memberid or sessionScope.sid eq 'admin')}">
+   
         <input type="submit" value="수정" class="btn btn-primary" >
         <input type="button" value="삭제" class="btn btn-secondary"
                onclick="location.href='boardDelete?bnum=${boardDto.bnum}'">
-    </c:if>
     <input type="button" value="글목록" class="btn btn-secondary"
            onclick="location.href='boardList'">
 </div>
